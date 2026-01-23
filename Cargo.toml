@@ -1,0 +1,17 @@
+[package]
+name = "outlook-fetcher-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Simple CLI for Outlook email fetcher"
+
+[[bin]]
+name = "outlook-fetcher-cli"
+path = "src/main.rs"
+
+[dependencies]
+outlook-fetcher-core.workspace = true
+tokio.workspace = true
+anyhow.workspace = true
+dotenvy.workspace = true
+clap = { workspace = true }
