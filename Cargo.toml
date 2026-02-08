@@ -1,17 +1,19 @@
 [package]
-name = "outlook-fetcher-cli"
-version.workspace = true
-edition.workspace = true
-license.workspace = true
-description = "Simple CLI for Outlook email fetcher"
+name = "fafafa-outlook-cli"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "CLI tool for Outlook email fetcher"
+authors = ["Your Name"]
 
 [[bin]]
-name = "outlook-fetcher-cli"
+name = "outlook-cli"
 path = "src/main.rs"
 
 [dependencies]
-outlook-fetcher-core.workspace = true
-tokio.workspace = true
-anyhow.workspace = true
-dotenvy.workspace = true
-clap = { workspace = true }
+fafafa-outlook-core = { path = "../fafafa-outlook-core" }
+
+tokio = { version = "1", features = ["full"] }
+clap = { version = "4", features = ["derive", "env"] }
+anyhow = "1"
+dotenvy = "0.15"

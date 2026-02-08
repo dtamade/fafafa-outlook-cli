@@ -1,4 +1,4 @@
-# outlook-fetcher-cli
+# fafafa-outlook-cli
 
 命令行工具，用于访问 Outlook 邮箱、日历和联系人。
 
@@ -6,17 +6,16 @@
 
 ```bash
 # 从源码构建
-cargo build --release -p outlook-fetcher-cli
+cargo build --release
 
-# 或使用构建脚本
-./build.sh  # Linux/macOS
-build.bat   # Windows
+# 或
+cargo install --path .
 ```
 
 ## 用法
 
 ```bash
-outlook-fetcher-cli [OPTIONS] --token <TOKEN> <COMMAND>
+outlook-cli [OPTIONS] --token <TOKEN> <COMMAND>
 ```
 
 ### 全局选项
@@ -80,108 +79,108 @@ outlook-fetcher-cli [OPTIONS] --token <TOKEN> <COMMAND>
 
 ```bash
 # 列出收件箱
-outlook-fetcher-cli inbox
+outlook-cli inbox
 
 # 列出未读邮件
-outlook-fetcher-cli unread
+outlook-cli unread
 
 # 获取未读数量
-outlook-fetcher-cli unread-count
+outlook-cli unread-count
 
 # 搜索邮件
-outlook-fetcher-cli search "发票"
+outlook-cli search "发票"
 
 # 获取邮件详情
-outlook-fetcher-cli get "MESSAGE_ID"
+outlook-cli get "MESSAGE_ID"
 
 # 发送邮件
-outlook-fetcher-cli send "recipient@example.com" -s "主题" -b "邮件内容"
+outlook-cli send "recipient@example.com" -s "主题" -b "邮件内容"
 
 # 发送 HTML 邮件
-outlook-fetcher-cli send "recipient@example.com" -s "主题" -b "<h1>Hello</h1>" --html
+outlook-cli send "recipient@example.com" -s "主题" -b "<h1>Hello</h1>" --html
 
 # 回复邮件
-outlook-fetcher-cli reply "MESSAGE_ID" -m "感谢您的来信"
+outlook-cli reply "MESSAGE_ID" -m "感谢您的来信"
 
 # 回复全部
-outlook-fetcher-cli reply "MESSAGE_ID" -m "感谢" --all
+outlook-cli reply "MESSAGE_ID" -m "感谢" --all
 
 # 转发邮件
-outlook-fetcher-cli forward "MESSAGE_ID" -t "other@example.com" -c "请查看"
+outlook-cli forward "MESSAGE_ID" -t "other@example.com" -c "请查看"
 
 # 轮询新邮件
-outlook-fetcher-cli poll "2024-01-10T00:00:00Z"
+outlook-cli poll "2024-01-10T00:00:00Z"
 
 # 列出附件
-outlook-fetcher-cli attachments "MESSAGE_ID"
+outlook-cli attachments "MESSAGE_ID"
 
 # 下载附件
-outlook-fetcher-cli download -e "MESSAGE_ID" -a "ATTACHMENT_ID" -o "./file.pdf"
+outlook-cli download -e "MESSAGE_ID" -a "ATTACHMENT_ID" -o "./file.pdf"
 ```
 
 ### 草稿操作
 
 ```bash
 # 列出草稿
-outlook-fetcher-cli drafts
+outlook-cli drafts
 
 # 创建草稿
-outlook-fetcher-cli create-draft -s "主题" -b "内容" -t "to@example.com"
+outlook-cli create-draft -s "主题" -b "内容" -t "to@example.com"
 
 # 发送草稿
-outlook-fetcher-cli send-draft "DRAFT_ID"
+outlook-cli send-draft "DRAFT_ID"
 ```
 
 ### 日历操作
 
 ```bash
 # 列出事件
-outlook-fetcher-cli events
+outlook-cli events
 
 # 列出指定日期范围的事件
-outlook-fetcher-cli events --start "2024-01-01" --end "2024-01-31"
+outlook-cli events --start "2024-01-01" --end "2024-01-31"
 
 # 获取事件详情
-outlook-fetcher-cli event "EVENT_ID"
+outlook-cli event "EVENT_ID"
 
 # 创建事件
-outlook-fetcher-cli create-event -s "会议" --start "2024-01-15T10:00:00" --end "2024-01-15T11:00:00"
+outlook-cli create-event -s "会议" --start "2024-01-15T10:00:00" --end "2024-01-15T11:00:00"
 
 # 创建带地点和参与者的事件
-outlook-fetcher-cli create-event -s "会议" --start "2024-01-15T10:00:00" --end "2024-01-15T11:00:00" \
+outlook-cli create-event -s "会议" --start "2024-01-15T10:00:00" --end "2024-01-15T11:00:00" \
   -l "会议室A" -a "user1@example.com,user2@example.com"
 
 # 创建在线会议
-outlook-fetcher-cli create-event -s "在线会议" --start "2024-01-15T10:00:00" --end "2024-01-15T11:00:00" --online
+outlook-cli create-event -s "在线会议" --start "2024-01-15T10:00:00" --end "2024-01-15T11:00:00" --online
 
 # 接受邀请
-outlook-fetcher-cli accept-event "EVENT_ID"
+outlook-cli accept-event "EVENT_ID"
 
 # 拒绝邀请
-outlook-fetcher-cli decline-event "EVENT_ID" -c "时间冲突"
+outlook-cli decline-event "EVENT_ID" -c "时间冲突"
 ```
 
 ### 联系人操作
 
 ```bash
 # 列出联系人
-outlook-fetcher-cli contacts
+outlook-cli contacts
 
 # 搜索联系人
-outlook-fetcher-cli contacts -s "张三"
+outlook-cli contacts -s "张三"
 
 # 获取联系人详情
-outlook-fetcher-cli contact "CONTACT_ID"
+outlook-cli contact "CONTACT_ID"
 
 # 创建联系人
-outlook-fetcher-cli create-contact --first-name "张" --last-name "三" -e "zhangsan@example.com"
+outlook-cli create-contact --first-name "张" --last-name "三" -e "zhangsan@example.com"
 
 # 创建完整联系人
-outlook-fetcher-cli create-contact --first-name "张" --last-name "三" \
+outlook-cli create-contact --first-name "张" --last-name "三" \
   -e "zhangsan@example.com" -m "13800138000" -c "公司名" -j "工程师"
 
 # 删除联系人
-outlook-fetcher-cli delete-contact "CONTACT_ID"
+outlook-cli delete-contact "CONTACT_ID"
 ```
 
 ## License

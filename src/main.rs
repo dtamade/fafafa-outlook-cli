@@ -2,7 +2,7 @@
 //!
 //! Usage:
 //! ```text
-//! outlook-fetcher-cli [OPTIONS] <COMMAND>
+//! outlook-cli [OPTIONS] <COMMAND>
 //! ```
 //!
 //! Commands:
@@ -19,14 +19,14 @@
 //!   contacts - Contact commands
 
 use clap::{Parser, Subcommand};
-use outlook_fetcher_core::{
+use fafafa_outlook_core::{
     DateTimeTimeZone, DraftMessage, NewCalendarEvent, NewContact, NewMessage, OutlookClient,
 };
 
-const DEFAULT_CLIENT_ID: &str = outlook_fetcher_core::auth::DEFAULT_CLIENT_ID;
+const DEFAULT_CLIENT_ID: &str = fafafa_outlook_core::auth::DEFAULT_CLIENT_ID;
 
 #[derive(Parser)]
-#[command(name = "outlook-fetcher-cli")]
+#[command(name = "outlook-cli")]
 #[command(about = "Outlook email fetcher CLI", long_about = None)]
 struct Cli {
     /// Microsoft OAuth refresh token
@@ -656,7 +656,7 @@ async fn main() -> anyhow::Result<()> {
     Ok(())
 }
 
-fn print_messages(messages: &[outlook_fetcher_core::Message]) {
+fn print_messages(messages: &[fafafa_outlook_core::Message]) {
     if messages.is_empty() {
         println!("(no messages)");
         return;
