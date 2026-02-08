@@ -11,7 +11,7 @@ name = "outlook-cli"
 path = "src/main.rs"
 
 [dependencies]
-fafafa-outlook-core = { path = "../fafafa-outlook-core" }
+fafafa-outlook-core = { git = "https://github.com/dtamade/fafafa-outlook-core.git" }
 
 tokio = { version = "1", features = ["full"] }
 clap = { version = "4", features = ["derive", "env"] }
